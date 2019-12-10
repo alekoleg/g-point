@@ -1,0 +1,94 @@
+:root {
+    --primary: #7c3fcc;
+    --primary-darken: #451880;
+    --primary-shadow: rgba(121,82,179,.25);
+
+    --secondary: #ececec;
+    --dark: #444;
+
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: var(--primary);
+
+    --black: #000;
+    --white: #fff;
+    --gray: #aeaeae;
+
+    --border-width: .1rem;
+    --border-radius: .7rem;
+    --offset: 2rem;
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--dark);
+    font-size: 1.6rem;
+}
+
+#app {
+    padding: 5rem;
+}
+
+h1, h2, h3,
+h4, h5, h6 {
+    margin: 0 0 2rem 0;
+}
+
+a {
+    color: var(--primary);
+}
+
+a:hover {
+    color: var(--primary-darken);
+    text-decoration: none;
+}
+
+input,
+textarea,
+button,
+select,
+.button {
+    color: var(--dark);
+    font-size: 1.6rem;
+    text-decoration: none;
+    line-height: 1.4;
+    padding: 1rem 1.4rem;
+    border: .1rem solid var(--secondary);
+    border-radius: var(--border-radius);
+    background: var(--white);
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select, button, .button {
+    cursor: pointer;
+}
+
+input:focus, input:active,
+select:focus, select:active,
+textarea:focus, textarea:active,
+button:focus, button:active,
+.button:focus, .button:active {
+    color: var(--dark);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-shadow);
+    outline: 0;
+    z-index: 1;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.DayPicker {
+    font-size: 1.1rem !important;
+}
