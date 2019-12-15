@@ -33,6 +33,13 @@ const WEEKDAYS_LONG = [
     'Суббота'
 ];
 
+const ORDER_STATUS = [
+    {"name" : "Все", "value": ''},
+    {"name" : "В ожидании оплаты", "value": "pending"},
+    {"name" : "Покупка удалась", "value": "success"},
+    {"name" : "Оплата не прошла", "value": "failed"}
+]
+
 const WEEKDAYS_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
 const Orders = () => {
@@ -102,6 +109,13 @@ const Orders = () => {
         const queryString = `?${qs.toString()}`
         history.push(`/${taxonomy}${(queryString !== '?' ? queryString : '')}`)
     }
+
+    const handleStatusChange = e => {
+        qs.set('status', e.target.value)
+        for (const [param, value] of qs) if (value === '') qs.delete(param)
+        const queryString = `?${qs.toString()}`
+        history.push(`/${taxonomy}${(queryString !== '?' ? queryString : '')}`)
+    } 
     
     return (
         <div>
@@ -109,6 +123,11 @@ const Orders = () => {
             <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '4rem'}}>
                 <Search taxonomy={taxonomy} placeholder="Поиск по ID..." />
                 <div>
+                    <select style={{ marginRight: '2rem' }} onChange={handleStatusChange}>
+                        <option value='' style={{ display: 'none' }}>Статус покупки</option>
+                        {ORDER_STATUS.map(status => <option key={status.name} value={status.value}>{status.name}</option>)}
+                    </select>
+
                     {categories.length > 0 ? <select style={{ marginRight: '2rem' }} onChange={handleCategoryChange}>
                         <option value='' style={{ display: 'none' }}>Выбрать автомат</option>
                         {categories.map(category => <option key={category.id} value={category.get('identifier')}>{category.get('name')}</option>)}
